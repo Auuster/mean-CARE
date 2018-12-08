@@ -1,0 +1,48 @@
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/patients']"><mat-icon>list</mat-icon></a>
+</div>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title><h2>{{patient.name.first}}</h2></mat-card-title>
+    <mat-card-subtitle>{{patient.name.middle}} {{patient.name.last}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <dl>
+      <dt>Title:</dt>
+      <dd>{{patient.title}}<dd>
+      <dt>Sex:</dt>
+      <dd>{{patient.sex}}</dd>
+      <dt>Birthdate:</dt>
+      <dd>{{patient.birthdate | date}}</dd>
+      <dt>Home phone:</dt>
+      <dd>{{patient.contact.home}}</dd>
+      <dt>Mobile phone:</dt>
+      <dd>{{patient.contact.mobile}}</dd>
+      <dt>Work phone:</dt>
+      <dd>{{patient.contact.work}}</dd>
+      <dt>Email:</dt>
+      <dd>{{patient.contact.email}}</dd>
+      <dt>Address 1:</dt>
+      <dd>{{patient.address.line1}}</dd>
+      <dt>Address 2:</dt>
+      <dd>{{patient.address.line2}}</dd>
+      <dt>Country:</dt>
+      <dd>{{patient.address.country}}</dd>
+      <dt>Province:</dt>
+      <dd>{{patient.address.province}}</dd>
+      <dt>Town:</dt>
+      <dd>{{patient.address.town}}</dd>
+      <dt>Postal code:</dt>
+      <dd>{{patient.address.postal}}</dd>
+      <dt>Comments:</dt>
+      <dd>{{patient.comments}}</dd>
+
+      <dt>Update Date:</dt>
+      <dd>{{patient.updated_date | date}}</dd>
+    </dl>
+  </mat-card-content>
+  <mat-card-actions>
+    <a mat-raised-button color="primary" [routerLink]="['/patient-edit', patient._id]"><mat-icon>edit</mat-icon></a>
+    <a mat-raised-button color="warn" (click)="deletePatient(patient._id)"><mat-icon>delete</mat-icon></a>
+  </mat-card-actions>
+</mat-card>

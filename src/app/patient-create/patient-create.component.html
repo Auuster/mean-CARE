@@ -1,0 +1,131 @@
+<div class="button-row">
+  <a mat-raised-button color="primary" [routerLink]="['/patients']"><mat-icon>list</mat-icon></a>
+</div>
+<form [formGroup]="patientForm" (ngSubmit)="onFormSubmit(patientForm.value)">
+  <div formGroupName="name">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First name" formControlName="first"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('name').get('first').valid && patientForm.get('name').get('first').touched">Please enter First name</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Middle name" formControlName="middle"
+    		[errorStateMatcher]="matcher">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last name" formControlName="last"
+           [errorStateMatcher]="matcher">
+    <mat-error>
+      <span *ngIf="!patientForm.get('name').get('last').valid && patientForm.get('name').get('last').touched">Please enter Last name</span>
+    </mat-error>
+  </mat-form-field>
+  </div>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Title" formControlName="title"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('title').valid && patientForm.get('title').touched">Please enter a Title</span>
+    </mat-error>
+  </mat-form-field>
+   <mat-form-field class="example-full-width">
+    <mat-select placeholder="Sex" formControlName="sex">
+      <mat-option *ngFor="let sex of sexes" [value]="sex">{{sex}}</mat-option>
+    </mat-select>
+    <mat-error>
+      <span *ngIf="!patientForm.get('sex').valid && patientForm.get('sex').touched">Please select a Sex</span>
+    </mat-error>
+  </mat-form-field>
+   <mat-form-field class="example-full-width">
+    <input matInput [matDatepicker]="birthdate" formControlName="birthdate" placeholder="Birthdate">
+      <mat-datepicker-toggle [for]="birthdate"></mat-datepicker-toggle>
+      <mat-datepicker #birthdate></mat-datepicker>
+    <mat-error>
+      <span *ngIf="!patientForm.get('birthdate').valid && patientForm.get('birthdate').touched">Please enter a birthdate</span>
+    </mat-error>
+  </mat-form-field>
+  <div formGroupName="contact">
+   <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Home phone" formControlName="home"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('contact').get('home').valid && patientForm.get('contact').get('home').touched">Please enter actual phone number</span>
+    </mat-error>
+  </mat-form-field>
+   <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Work phone" formControlName="work"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('contact').get('work').valid && patientForm.get('contact').get('work').touched">Please enter actual phone number</span>
+    </mat-error>
+  </mat-form-field>
+   <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Mobile phone" formControlName="mobile"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('contact').get('mobile').valid && patientForm.get('contact').get('mobile').touched">Please enter actual phone number</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Email" formControlName="email"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('contact').get('email').valid && patientForm.get('contact').get('email').touched">Please enter an email</span>
+    </mat-error>
+  </mat-form-field>
+</div>
+<div formGroupName="address">
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Address 1" formControlName="line1"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('address').get('line1').valid && patientForm.get('address').get('line1').touched">Please enter an Address 1</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Address 2" formControlName="line2"
+           [errorStateMatcher]="matcher"></textarea>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Country" formControlName="country"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('address').get('country').valid && patientForm.get('address').get('country').touched">Please enter a Country</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Province" formControlName="province">
+      <mat-option *ngFor="let province of provinces" [value]="province">{{province}}</mat-option>
+    </mat-select>
+    <mat-error>
+      <span *ngIf="!patientForm.get('address').get('province').valid && patientForm.get('address').get('province').touched">Please selectr a Province</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Town" formControlName="town"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('address').get('town').valid && patientForm.get('address').get('town').touched">Please enter a Town</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Postal code" formControlName="postal"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('address').get('postal').valid && patientForm.get('address').get('postal').touched">Please enter a Country</span>
+    </mat-error>
+  </mat-form-field>
+</div>
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Comments" formControlName="comments"
+           [errorStateMatcher]="matcher"></textarea>
+    <mat-error>
+      <span *ngIf="!patientForm.get('comments').valid && patientForm.get('comments').touched">Please enter Comments</span>
+    </mat-error>
+  </mat-form-field>
+  
+  <div class="button-row">
+    <button type="submit" [disabled]="!patientForm.valid" mat-raised-button color="primary"><mat-icon>save</mat-icon></button>
+  </div>
+</form>
